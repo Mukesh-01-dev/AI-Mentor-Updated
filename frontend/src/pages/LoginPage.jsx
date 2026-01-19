@@ -7,11 +7,13 @@ import SocialLogin from "../components/auth/SocialLogin";
 /* FormInput stays exactly as your designed UI */
 const FormInput = ({ label, type, placeholder, value, onChange }) => {
   return (
-    <div className="mb-3">
-      <label className="form-label">{label}</label>
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+        {label}
+      </label>
       <input
         type={type}
-        className="form-control"
+        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BEA5] focus:border-transparent transition-all dark:bg-[#0f172a] dark:border-gray-700 dark:text-white dark:placeholder-gray-500"
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -20,7 +22,7 @@ const FormInput = ({ label, type, placeholder, value, onChange }) => {
   );
 };
 
-const Login = () => {
+const LoginPage = () => {
   /* 🔹 LOGIC FROM WORKING LOGIN PAGE (UNCHANGED) */
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -59,7 +61,7 @@ const Login = () => {
       title="Join Us Today!"
       subtitle="Create your account for an enhanced experience at your fingertips."
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <FormInput
           label="Email Address"
           type="email"
@@ -69,54 +71,57 @@ const Login = () => {
         />
 
         {/* ✅ Direct Password Input */}
-        <div className="mb-3">
-          <label className="form-label">Password</label>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Password
+          </label>
           <input
             type="password"
-            className="form-control"
+            className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00BEA5] focus:border-transparent transition-all dark:bg-[#0f172a] dark:border-gray-700 dark:text-white dark:placeholder-gray-500"
             placeholder="••••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        {/* Keep Logged In */}
-
-        <div className="d-flex">
-          <div className="form-check mb-1">
+        {/* Keep Logged In & Forgot Password */}
+        <div className="flex items-center justify-between mb-6">
+          <label className="flex items-center space-x-2 cursor-pointer">
             <input
               type="checkbox"
-              className="form-check-input"
-              id="keepLoggedIn"
+              className="w-4 h-4 rounded border-gray-300 text-[#00BEA5] focus:ring-[#00BEA5]"
               checked={keepLoggedIn}
               onChange={() => setKeepLoggedIn(!keepLoggedIn)}
             />
-            <label className="form-check-label" htmlFor="keepLoggedIn">
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               Keep me logged in
-            </label>
-          </div>
+            </span>
+          </label>
 
-          <div className="d-flex justify-content-end w-52 mb-3">
-            <a
-              href="/forgot-password"
-              className="text-primary text-decoration-none fw-semibold"
-              style={{ fontSize: "0.9rem" }}
-            >
-              Forgot password?
-            </a>
-          </div>
+          <a
+            href="/forgot-password"
+            className="text-sm font-semibold text-[#00BEA5] hover:text-[#00a08b] transition-colors"
+          >
+            Forgot password?
+          </a>
         </div>
 
-        <button type="submit" className="btn btn-gradient w-100 py-2">
+        <button
+          type="submit"
+          className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#2186df] to-[#02ffbb] text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+        >
           Login
         </button>
       </form>
 
       <SocialLogin />
 
-      <p className="text-center mt-3">
+      <p className="text-center mt-8 text-gray-600 dark:text-gray-400">
         Don’t have an account?{" "}
-        <Link to="/signup" className="text-decoration-none text-primary">
+        <Link
+          to="/signup"
+          className="font-semibold text-[#00BEA5] hover:text-[#00a08b] transition-colors"
+        >
           Sign Up
         </Link>
       </p>
@@ -124,4 +129,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

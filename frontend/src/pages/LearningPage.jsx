@@ -530,14 +530,14 @@ export default function Learning() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-canvas-alt flex">
       <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* Sidebar */}
-      <div className="fixed left-0 top-16 bottom-0 w-80 bg-white border-r border-gray-200 overflow-y-auto z-10">
+      <div className="fixed left-0 top-16 bottom-0 w-80 text-main bg-card border-r border-gray-200 overflow-y-auto z-10">
         <div className="p-6 h-full overflow-y-auto">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">
+            <h2 className="text-xl font-bold text-main">
               {learningData?.course?.title || learningData?.title || "Course"}
             </h2>
             <button
@@ -549,7 +549,7 @@ export default function Learning() {
           </div>
 
           <div className="mb-4">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            <h3 className="text-sm font-semibold text-main mb-3">
               Celebrities
             </h3>
             <div className="mb-3">
@@ -611,13 +611,13 @@ export default function Learning() {
               });
               return (
                 <>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="w-full bg-gray-200 dark:bg-gray-400 rounded-full h-2">
                     <div
                       className="bg-blue-600 h-2 rounded-full"
                       style={{ width: `${progressPercent}%` }}
                     ></div>
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">
+                  <p className="text-sm text-muted mt-2">
                     {Math.round(progressPercent)}% Complete
                   </p>
                 </>
@@ -638,7 +638,7 @@ export default function Learning() {
 
               if (q && filteredModules.length === 0) {
                 return (
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted">
                     No results for "{searchQuery}"
                   </p>
                 );
@@ -653,9 +653,9 @@ export default function Learning() {
                 >
                   <button
                     onClick={() => toggleModule(module.id)}
-                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50"
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-border"
                   >
-                    <span className="font-medium text-gray-900">
+                    <span className="font-medium text-main">
                       {module.title}
                     </span>
                     <ChevronDown
@@ -671,22 +671,22 @@ export default function Learning() {
                         <button
                           key={lesson.id}
                           onClick={() => handleLessonClick(lesson)}
-                          className={`w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-gray-50 ${
+                          className={`w-full flex items-center gap-3 p-3 rounded-lg text-left hover:bg-border ${
                             currentLesson?.id === lesson.id
-                              ? "bg-blue-50 border border-blue-200"
+                              ? "bg-input-bg border border-blue-200 dark:border-blue-200"
                               : ""
                           }`}
                         >
                           {lesson.type === "video" ? (
                             <Play className="w-4 h-4 text-gray-400" />
                           ) : (
-                            <FileText className="w-4 h-4 text-gray-400" />
+                            <FileText className="w-4 h-4 text-main" />
                           )}
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-900">
+                            <p className="text-sm font-medium text-main">
                               {lesson.title}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-muted">
                               {lesson.duration}
                             </p>
                           </div>

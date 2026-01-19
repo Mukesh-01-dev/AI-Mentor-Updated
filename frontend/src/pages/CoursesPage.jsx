@@ -118,12 +118,12 @@ const CoursesPage = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#F8FAFC] flex items-center justify-center">
+      <div className="min-h-screen bg-canvas-alt flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-slate-900 mb-4">
+          <h1 className="text-2xl font-bold text-main mb-4">
             Please Login
           </h1>
-          <p className="text-slate-500">
+          <p className="text-muted">
             You need to be logged in to access the courses page.
           </p>
         </div>
@@ -132,7 +132,7 @@ const CoursesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col">
+    <div className="min-h-screen bg-canvas-alt flex flex-col">
       <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       <Sidebar
@@ -152,22 +152,22 @@ const CoursesPage = () => {
           <div className="max-w-7xl mx-auto space-y-10">
             {/* Header */}
             <div>
-              <h1 className="text-3xl font-bold text-slate-900">
+              <h1 className="text-3xl font-bold text-main">
                 Learning Hub
               </h1>
-              <p className="text-slate-500 mt-1">
+              <p className="text-muted mt-1">
                 Discover and continue your AI learning journey
               </p>
             </div>
 
             {/* Tabs */}
-            <div className="bg-white rounded-xl p-2 inline-flex border border-slate-100 shadow-sm">
+            <div className="bg-card rounded-xl p-2 inline-flex border border-border shadow-sm">
               <button
                 onClick={() => setActiveTab("my-courses")}
                 className={`px-6 py-2 rounded-lg font-semibold transition ${
                   activeTab === "my-courses"
                     ? "bg-[#2DD4BF] text-white shadow"
-                    : "text-slate-500"
+                    : "text-muted"
                 }`}
               >
                 My Courses
@@ -177,7 +177,7 @@ const CoursesPage = () => {
                 className={`px-6 py-2 rounded-lg font-semibold transition ${
                   activeTab === "explore"
                     ? "bg-[#2DD4BF] text-white shadow"
-                    : "text-slate-500"
+                    : "text-muted"
                 }`}
               >
                 Explore Courses
@@ -190,7 +190,7 @@ const CoursesPage = () => {
                 {mockCourses.map((course) => (
                   <div
                     key={course.id}
-                    className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm"
+                    className="bg-card rounded-3xl border border-border overflow-hidden shadow-sm"
                   >
                     <div className="relative h-40">
                       <img
@@ -206,24 +206,24 @@ const CoursesPage = () => {
                     </div>
 
                     <div className="p-6 space-y-4">
-                      <h3 className="text-lg font-semibold text-slate-900">
+                      <h3 className="text-lg font-semibold text-main">
                         {course.title}
                       </h3>
 
                       <div>
-                        <div className="h-2 bg-slate-100 rounded-full">
+                        <div className="h-2 bg-border rounded-full">
                           <div
                             className={`h-2 rounded-full ${course.progressColor}`}
                             style={{ width: `${course.progress}%` }}
                           />
                         </div>
-                        <p className="text-xs text-slate-400 mt-1">
+                        <p className="text-xs text-muted mt-1">
                           {course.progress}% Complete
                         </p>
                       </div>
 
                       <div className="flex justify-between items-center">
-                        <span className="text-sm text-slate-400">
+                        <span className="text-sm text-muted">
                           {course.lessons}
                         </span>
                         <span
@@ -254,7 +254,7 @@ const CoursesPage = () => {
                 {exploreCourses.map((course) => (
                   <div
                     key={course.id}
-                    className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+                    className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden"
                   >
                     <div className="relative h-40">
                       <img
@@ -262,7 +262,7 @@ const CoursesPage = () => {
                         className="w-full h-full object-cover"
                         alt={course.title}
                       />
-                      <div className="absolute bottom-3 right-3 bg-white px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1 shadow">
+                      <div className="absolute bottom-3 right-3 bg-card px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1 shadow">
                         <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
                         {course.rating}
                       </div>
@@ -273,21 +273,21 @@ const CoursesPage = () => {
                         <span className="text-xs px-3 py-1 rounded-full bg-cyan-50 text-cyan-600 font-semibold">
                           {course.category}
                         </span>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-muted">
                           {course.students} students
                         </span>
                       </div>
 
-                      <h3 className="text-sm font-semibold text-slate-900">
+                      <h3 className="text-sm font-semibold text-main">
                         {course.title}
                       </h3>
 
-                      <p className="text-xs text-slate-400">
+                      <p className="text-xs text-muted">
                         {course.lessons} lessons • {course.level}
                       </p>
 
                       <div className="flex justify-between items-center pt-2">
-                        <span className="font-bold text-slate-900">
+                        <span className="font-bold text-main">
                           ₹{course.price}
                         </span>
                         <button className="w-9 h-9 rounded-full border border-cyan-400 flex items-center justify-center text-cyan-500 hover:bg-cyan-50">
