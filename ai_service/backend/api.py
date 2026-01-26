@@ -49,25 +49,29 @@ def generate_lesson(data: LessonRequest, background_tasks: BackgroundTasks):
 # --------------------------
 def process_lesson(data: LessonRequest):
     try:
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
         # 1️⃣ Generate text
         prompt = f"Explain {data.topic} in 50 words."
         script = generate_text(prompt)
 
         # Ensure output folders
-        os.makedirs("outputs/audio", exist_ok=True)
-        os.makedirs("outputs/video", exist_ok=True)
+        audio_dir = os.path.join(BASE_DIR, "outputs", "audio")
+        video_dir = os.path.join(BASE_DIR, "outputs", "video")
+        os.makedirs(audio_dir, exist_ok=True)
+        os.makedirs(video_dir, exist_ok=True)
 
         # Save script
-        script_path = f"outputs/audio/{data.topic}.txt"
+        safe_topic = data.topic.replace(' ', '_')
+        script_path = os.path.join(audio_dir, f"{safe_topic}.txt")
         with open(script_path, "w", encoding="utf-8") as f:
             f.write(script)
 
         # 2️⃣ Text-to-Speech
-        audio_path = f"outputs/audio/{data.topic}.wav"
+        audio_path = os.path.join(audio_dir, f"{safe_topic}.wav")
         text_to_speech(script, audio_path)
 
         # 3️⃣ Celebrity image
-        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         celeb_image = os.path.join(
             BASE_DIR,
             "assets",
@@ -80,7 +84,8 @@ def process_lesson(data: LessonRequest):
 
         # 4️⃣ Generate video using Wav2Lip
 
-        video_path = f"{BASE_DIR}\\outputs\\video\\{data.topic.replace(' ', '_')}_{data.celebrity}_{data.course}.mp4"
+        video_filename = f"{safe_topic}_{data.celebrity}_{data.course.replace(' ', '_')}.mp4"
+        video_path = os.path.join(video_dir, video_filename)
         generate_video(celeb_image, audio_path, video_path)
 
 

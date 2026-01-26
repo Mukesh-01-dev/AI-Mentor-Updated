@@ -39,7 +39,7 @@ router.post("/generate-video", async (req, res) => {
 
     // Match the original logic in api.py: topic.replace(' ', '_')
     // and the format: {topic_with_underscores}_{celebrity}_{course}.mp4
-    const videoFileName = `${topic.replace(/\s+/g, '_')}_${celebrity}_${course}.mp4`;
+    const videoFileName = `${topic.replace(/\s+/g, '_')}_${celebrity}_${course.replace(/\s+/g, '_')}.mp4`;
 
     console.log(`Requested Video: ${videoFileName}`);
 
@@ -48,11 +48,13 @@ router.post("/generate-video", async (req, res) => {
       "../../ai_service/outputs/video",
       videoFileName
     );
-    const backendVideoPath = path.join(
-      __dirname,
-      "../videos",
-      videoFileName
-    );
+    const backendVideosFolder = path.join(__dirname, "../videos");
+    const backendVideoPath = path.join(backendVideosFolder, videoFileName);
+
+    // Ensure backend/videos exists
+    if (!fs.existsSync(backendVideosFolder)) {
+      fs.mkdirSync(backendVideosFolder, { recursive: true });
+    }
 
     // 1. Check if video already exists in backend/videos (Cache hit)
     if (fs.existsSync(backendVideoPath)) {

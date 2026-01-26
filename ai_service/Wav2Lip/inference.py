@@ -216,9 +216,9 @@ def main():
 
 	if not args.audio.endswith('.wav'):
 		print('Extracting raw audio...')
-		command = 'ffmpeg -y -i {} -strict -2 {}'.format(args.audio, 'temp/temp.wav')
-
-		subprocess.call(command, shell=True)
+		# Use a list to handle spaces in paths correctly
+		command = ['ffmpeg', '-y', '-i', args.audio, '-strict', '-2', 'temp/temp.wav']
+		subprocess.call(command)
 		args.audio = 'temp/temp.wav'
 
 	wav = audio.load_wav(args.audio, 16000)
@@ -273,8 +273,13 @@ def main():
 
 	out.release()
 
-	command = 'ffmpeg -y -i {} -i {} -strict -2 -q:v 1 {}'.format(args.audio, 'temp/result.avi', args.outfile)
-	subprocess.call(command, shell=platform.system() != 'Windows')
+	# Use a list to handle spaces in paths and check return code
+	command = ['ffmpeg', '-y', '-i', args.audio, '-i', 'temp/result.avi', '-strict', '-2', '-q:v', '1', args.outfile]
+	retcode = subprocess.call(command)
+	
+	if retcode != 0:
+		print(f"❌ FFmpeg failed with code {retcode}. Command was: {' '.join(command)}")
+		raise RuntimeError("FFmpeg merger failed")
 
 if __name__ == '__main__':
 	main()

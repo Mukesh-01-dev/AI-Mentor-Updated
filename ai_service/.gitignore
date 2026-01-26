@@ -1,5 +1,5 @@
 # Python
-__pycache__/
+*/__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -20,6 +20,7 @@ var/
 .installed.cfg
 *.egg
 
+outputs/
 
 # Virtual Environment
 venv/
@@ -34,18 +35,17 @@ ENV/
 .env.production.local
 
 # AI Service Specific
-outputs/
-temp/
-backend/temp/
-backend/outputs/
+# outputs/
+# temp/
+# backend/temp/
+# backend/outputs/
 
 # Wav2Lip specific (if not already covered by sub-gitignore)
 Wav2Lip/checkpoints/
-Wav2Lip/results/
-Wav2Lip/temp/
-Wav2Lip/samples/
 
 # Media and Models
+
+# *.pyc
 *.pth
 *.pkl
 *.h5
