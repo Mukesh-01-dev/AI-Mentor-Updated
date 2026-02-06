@@ -36,31 +36,31 @@ const SocialLogin = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3 mt-6">
+    <div className="flex flex-col gap-2.5 mt-4">
       <button
-        className="flex items-center justify-center w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00BEA5] transition-all dark:bg-[#0f172a] dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 cursor-pointer"
+        className="flex items-center justify-center w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00BEA5] transition-all dark:bg-[#0f172a] dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 cursor-pointer"
         type="button"
         onClick={handleGoogleLogin}
       >
         <img
           src={logoGoogle}
           alt="Google"
-          className="w-5 h-5 mr-3 object-contain"
+          className="w-4 h-4 mr-2.5 object-contain"
         />
-        <span>Sign in with Google</span>
+        <span className="text-sm">Sign in with Google</span>
       </button>
 
       <button
-        className="flex items-center justify-center w-full px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-gray-700 font-medium hover:bg-gray-50 opacity-60 cursor-not-allowed dark:bg-[#0f172a] dark:border-gray-700 dark:text-gray-300"
+        className="flex items-center justify-center w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-700 font-medium hover:bg-gray-50 opacity-60 cursor-not-allowed dark:bg-[#0f172a] dark:border-gray-700 dark:text-gray-300"
         type="button"
         disabled
       >
         <img
           src={logoApple}
           alt="Apple"
-          className="w-5 h-5 mr-3 object-contain"
+          className="w-4 h-4 mr-2.5 object-contain"
         />
-        <span>Sign in with Apple</span>
+        <span className="text-sm">Sign in with Apple</span>
       </button>
     </div>
   );

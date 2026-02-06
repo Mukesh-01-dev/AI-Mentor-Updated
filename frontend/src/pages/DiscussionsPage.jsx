@@ -220,7 +220,7 @@ const DiscussionsPage = () => {
       >
         {/* Discussion Content */}
         <main className="flex-1 bg-canvas-alt p-4 sm:p-6">
-          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+          <div className="max-w-4xl pt-12 mx-auto space-y-4 sm:space-y-6">
             {/* Ask a Question Section */}
             <div className="bg-card rounded-xl border border-border p-4 sm:p-6 shadow-sm">
               <h2 className="text-lg font-semibold text-main mb-4">
@@ -454,7 +454,7 @@ const DiscussionsPage = () => {
         </main>
 
         {/* My Courses Sidebar */}
-        <aside className="w-80 bg-card border-l border-border p-6 hidden xl:block">
+        <aside className="w-80 mt-8 bg-card border-l border-border p-6 hidden xl:block">
           <h2 className="text-xl font-bold text-main mb-6">My courses</h2>
           <div className="space-y-4">
             {myCourses.map((course, index) => (

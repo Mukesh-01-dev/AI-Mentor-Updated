@@ -205,7 +205,7 @@ const CoursesPage = () => {
                   .map((course) => (
                     <div
                       key={course.id}
-                      className="bg-white rounded-2xl border shadow-sm overflow-hidden"
+                      className="bg-card rounded-3xl border border-border overflow-hidden shadow-sm"
                     >
                       <div className="relative h-40">
                         <img
@@ -231,7 +231,7 @@ const CoursesPage = () => {
                         <div className="flex justify-between items-center">
                           <div>
                             <span className="line-through text-sm text-slate-400 mr-2">
-                              ₹{course.price}
+                              {course.price}
                             </span>
                             <span className="font-bold text-green-600">₹0</span>
                           </div>
@@ -280,7 +280,7 @@ const CoursesPage = () => {
 
             <div className="flex justify-between items-center mt-4">
               <span className="line-through text-slate-400">
-                ₹{selectedCourse.price}
+                {selectedCourse.price}
               </span>
               <span className="text-lg font-bold text-green-600">₹0</span>
             </div>

@@ -333,9 +333,9 @@ const Dashboard = () => {
 
         {/* Dashboard Content */}
         <main className="flex-1 mt-10 overflow-x-hidden overflow-y-auto bg-canvas-alt p-6">
-          <div className="max-w-7xl mx-auto space-y-8">
+          <div className="max-w-7xl pt-16 mx-auto space-y-8">
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {dynamicStatsCards.map((card, index) => (
                 <div
                   key={index}
